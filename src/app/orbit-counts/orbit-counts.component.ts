@@ -27,5 +27,21 @@ export class OrbitCountsComponent implements OnInit {
 	return count;
  }
 
+ get satelliteTypesCounter() {
+	let result = [];
+	let types = {};
+	this.satellites.forEach((satellite) => {
+		if (types[satellite.type] === undefined) {
+			types[satellite.type] = 1;
+		} else {
+			types[satellite.type]++;
+		}
+	});
+	for (let type in types) {
+		result.push({"type" : type, "count" : types[type]});
+	}
+	return result;
+ }
 
 }
+
